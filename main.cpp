@@ -1,8 +1,3 @@
-// Wyszukiwanie mediany
-// Data:   21.05.2008
-// (C)2020 mgr Jerzy Wa³aszek
-//---------------------------
-
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
@@ -12,10 +7,10 @@ using namespace std;
 
 const int N = 99;
 
-// Funkcja dzieli podany zbiór Z na dwie partycje:
+// Funkcja dzieli podany zbiÃ³r Z na dwie partycje:
 // ZL - elementy mniejsze od elementu zwrotnego
-// ZP - elementy wiêksze od elementu zwrotnego
-// Zwraca pozycjê elementu zwrotnego
+// ZP - elementy wiÄ™ksze od elementu zwrotnego
+// Zwraca pozycjÄ™ elementu zwrotnego
 //------------------------------------------------
 int Dziel_na_partycje ( int * Z, int ip, int ik )
 {
@@ -35,7 +30,7 @@ int Dziel_na_partycje ( int * Z, int ip, int ik )
   return ik;
 }
 
-// Procedura sortuje rosn¹co podany zbiór
+// Procedura sortuje rosnÄ…co podany zbiÃ³r
 //---------------------------------------
 void Sortuj_szybko ( int * Z, int ip, int ik )
 {
@@ -55,29 +50,29 @@ int main( )
 
   srand ( ( unsigned )time ( NULL ) );
 
-  // Przygotowujemy tablicê Z [ ]
+  // Przygotowujemy tablicÄ™ Z [ ]
 
   for( i = 0; i < N; i++ ) Z [ i ] = rand( ) % 1000;
 
-  // Na koñcu Z [ ] umieszczamy wartownika
+  // Na koÅ„cu Z [ ] umieszczamy wartownika
 
   Z [ N ] = 1000;
 
-  // Wyœwietlamy Z [ ] przed podzia³em
+  // WyÅ›wietlamy Z [ ] przed podziaÅ‚em
 
   for( i = 0; i < N; i++ ) cout << setw ( 4 ) << Z [ i ];
   cout << endl << endl;
 
-  // Sortujemy szybko tablicê Z [ ]
+  // Sortujemy szybko tablicÄ™ Z [ ]
 
   Sortuj_szybko ( Z, 0, N - 1 );
 
-  // Wyœwietlamy Z [ ] po sortowaniu
+  // WyÅ›wietlamy Z [ ] po sortowaniu
 
   for( i = 0; i < N; i++ ) cout << setw ( 4 ) << Z [ i ];
   cout << endl << endl;
 
-  // Wyœwietlamy medianê
+  // WyÅ›wietlamy medianÄ™
 
   cout << Z [ N >> 1 ] << endl << endl;
   getchar();
