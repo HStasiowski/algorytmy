@@ -1,41 +1,90 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="zaliczenie" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debuggg">
-				<Option output="bin/Debug/zaliczenie" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Releaseee">
-				<Option output="bin/Release/zaliczenie" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-Os" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-					<Add option="-static-libstdc++" />
-					<Add option="-static-libgcc" />
-					<Add option="-static" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions />
-	</Project>
-</CodeBlocks_project_file>
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int N=50;
+
+
+void sortowanie(int* Z, int N)
+{
+    for(int i = 0; i < N - 1; i++)
+    {
+        int min = i;
+        for(int j = i + 1; j < N; j++)
+        {
+            if(Z[j] < Z[min])
+            {
+                min = j;
+            }
+        }
+        if(i != min)
+        {
+            int t = Z[i];
+            Z[i] = Z[min];
+            Z[min] = t;
+        }
+    }
+}
+
+int main()
+{
+
+    int Z[N];
+    srand(time(0));
+    cout<<"Wygenerowalem tablice liczb: \n";
+    for(int i=0; i<N; i++)
+
+    {
+        Z [i]=( std::rand() % 21 ) + 160; //generowanie losowych liczb z przedzia³u 160-180
+        cout<< Z[i]<<" ";
+    }
+    cout<<"\n\n";
+
+    sortowanie(Z,N);
+
+
+    for(int i=0; i<N; i++)
+
+        cout<< Z[i]<<" ";
+    cout<<"\n\n";
+
+    int powtorki=0; // usuwanie z tablicy duplikatow
+    for(int i=0; i<N; i++)
+    {
+        int k;
+        int g= Z[i];
+        for(k=0; k<powtorki;k++)
+        {
+            if(Z[k]==g)
+            {
+                break;
+            }
+        }
+        if(k>=powtorki)
+        {
+            Z[powtorki++]=g;
+        }
+    }
+     for(int i=0; i<powtorki; i++)
+
+        cout<< Z[i]<<" ";
+    int maxsam=Z[0];
+    int minsam=Z[0];
+
+    for(int i=0; i<N; i++) //znajdowanie najwiekszego i najmniejszego elementu tablicy
+    {
+        if(Z[i]>maxsam)
+            maxsam=Z[i];
+        if(Z[i]<minsam)
+            minsam=Z[i];
+    }
+
+
+    cout<<"\nMax: "<<maxsam;
+    cout<<"\nmin:  "<<minsam;
+    cout<<"\n";
+
+getchar();
+    return 0;
+}
